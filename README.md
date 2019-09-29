@@ -1,3 +1,12 @@
+taprecart-browser 8MB mod
+=========================
+
+This is a spinoff,  modified tapecart-browser that will be capable of
+handling more than 126 entries in the menu (coming from one single
+TCTR file). Currently investigation is ongoing for feasibility check
+if it is reasonably possible...
+
+
 tapecart-browser
 ================
 
@@ -21,4 +30,4 @@ Run the following to create the binary:
 Binaries
 --------
 
-Compiled binaries are avilable in the [Releases](https://github.com/alexkazik/tapecart-browser/releases/latest) section.
+Compiled binaries are available in the [Releases](https://github.com/alexkazik/tapecart-browser/releases/latest) section.
