@@ -1,4 +1,4 @@
-taprecart-browser 8MB mod
+tapecart-browser large directory mod
 =========================
 
 This is a spinoff,  modified tapecart-browser that will be capable of
