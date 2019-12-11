@@ -3,8 +3,10 @@ taprecart-browser 8MB mod
 
 This is a spinoff,  modified tapecart-browser that will be capable of
 handling more than 126 entries in the menu (coming from one single
-TCTR file). Currently investigation is ongoing for feasibility check
+TCRT file). Currently investigation is ongoing for feasibility check
 if it is reasonably possible...
+This haskell environment is insane (almost 1GB needs to be downloaded to install), but I don't have time to refactor..
+
 
 
 tapecart-browser
