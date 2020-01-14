@@ -72,9 +72,9 @@ while ($ln = fgetcsv($file, 0, ';')) {
   }
 }
 
-$fs = "\x02\x10TapcrtFileSys";
+$fs = "\x02\x08TapcrtFileSys";
 $data = ''; // no payload so far
-$start = 0x1000; // start after filesystem
+$start = 0x2000; // start after filesystem
 
 foreach ($files as $file) {
   $fs .=
@@ -84,18 +84,18 @@ foreach ($files as $file) {
     substr(pack('V', $file['size']), 0, 3).
     $file['loadaddress'].
     str_repeat("\x00", 8);
-  $d = padBlock($file['data']);
+  $d = padBlock256($file['data']);
   $data .= $d;
   $start += strlen($d);
 }
 
-if (strlen($fs) > 0x1000) {
-  echo 'Too many entries (max. 126)'.PHP_EOL;
+if (strlen($fs) > 0x2000) {
+  echo 'Too many entries (max. 254)'.PHP_EOL;
   exit(1);
 }
 
-if (strlen(padBlock($fs).$data) > 2 * 1024 * 1024) {
-  echo 'Too big (max. 2 MiB)'.PHP_EOL;
+if (strlen(padBlock($fs).$data) > 16 * 1024 * 1024) {
+  echo 'Too big (max. 16 MiB)'.PHP_EOL;
   exit(1);
 }
 
@@ -104,12 +104,12 @@ file_put_contents(
   "tapecartImage\x0d\x0a\x1a".
   pack('v', 1).
   pack('v', 0).
-  pack('v', 0x1000 + strlen($browser)).
-  pack('v', 0x2800).
+  pack('v', 0x2000 + strlen($browser)).
+  pack('v', 0x3000).
   str_pad(substr($name, 0, 16), 16, ' ', STR_PAD_RIGHT).
   "\x00".
   str_repeat("\x00", 171).
-  pack('V', 0x1000 + strlen($data)).
+  pack('V', 0x2000 + strlen($data)).
   padBlock($fs).
   $data
 );
@@ -127,10 +127,19 @@ function toPetscii($t) {
 }
 
 function padBlock($b) {
-  $l = strlen($b) & 0xfff;
+  $l = strlen($b) & 0x1fff;
   if ($l == 0) {
     return $b;
   } else {
-    return $b.str_repeat("\xff", 0x1000 - $l);
+    return $b.str_repeat("\xff", 0x2000 - $l);
+  }
+}
+
+function padBlock256($b) {
+  $l = strlen($b) & 0x0ff;
+  if ($l == 0) {
+    return $b;
+  } else {
+    return $b.str_repeat("\xff", 0x100 - $l);
   }
 }

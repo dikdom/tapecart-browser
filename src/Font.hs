@@ -95,7 +95,7 @@ version :: String
 version = case versionBranch CabalInfo.version of
   []      -> ['?', delm, '?', ' ']
   [a]     -> [v a, delm, '?', ' ']
-  [a,b]   -> [v a, delm, v b, ' ']
+  [a,b]   -> [v a, delm, v b, '+']
   [_,_,0] -> "BETA"
   [a,b,c] -> [v a, delm, v b, v' c]
   (a:b:_) -> [v a, delm, v b, '?']
@@ -142,7 +142,7 @@ screen = snd $ mapAccumL convertChar False $ showVersion $ filter (/= '\n') scre
 ╵                        ╷             │
 ╵                        ╷ Quit<F2>    │
 ╵                        ╷             │
-╵                        ╷ Browser X.YZ│
+╵                        ╷ Browser X.Y+│
 ╵                        ╷ by 🄰🄱🄲🄳🄴🄵   │
 └────────────────────────╯─────────────┘
 |]

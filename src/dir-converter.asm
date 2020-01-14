@@ -9,12 +9,12 @@ type struct {
 type struct {
   byte[2] system_data;
   byte[13] id;
-  _FSEntry[127] entries;
+  _FSEntry[255] entries;
   byte [17] eof;
 } _TapCrtFS
 
-pointer _TapCrtFS TapCrtFS = 0x1000
-pointer byte[] DisplayFS = 0x0800
+pointer _TapCrtFS TapCrtFS = 0x0800
+pointer byte[] DisplayFS = 0x4800
 
 block dirConverter
 

@@ -19,7 +19,7 @@ typeToIcon = section1 ++ section2 ++ section3 ++ section4
     section4 = [28] ++ replicate 14 (0x80 *& 0x80) ++ [0]
 
 constPageScroll :: Int
-constPageScroll = 15
+constPageScroll = 23
 
 constKeepClear :: Int
 constKeepClear = 3
@@ -29,4 +29,4 @@ dirStartPositionsHi :: [Int]
 (dirStartPositionsLo, dirStartPositionsHi) =
   unzip (map ((.&. 0xff) &&& (`shiftR` 8)) pos)
   where
-    pos = map (\x -> x * 40 + 0x0800) [0..125]
+    pos = map (\x -> x * 40 + 0x4800) [0..253]

@@ -45,7 +45,7 @@ vicInit =
   , ("sprite_enable", 0xff)
   , ("control2", 0x08)
   , ("sprite_ydouble", 0x00)
-  , ("memory", 0x18)
+  , ("memory", 0x1a) 
   , ("sprite_prio", 0xff)
   , ("sprite_mc", 0x00)
   , ("sprite_xdouble", 0x00)
@@ -79,7 +79,7 @@ someConst labelBase start pool align list =
 code :: Asm
 code = [asm|
   set meta.cpu = #6502
-  pool out[font,start,prog,data] = 0x2000
+  pool out[font,start,prog,data] = 0x2800
   pool zp = virtual 0x0002
   pool reloc_stack = 0x0110
   pool reloc_0200 = 0x0200
