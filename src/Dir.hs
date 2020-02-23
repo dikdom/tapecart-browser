@@ -29,4 +29,4 @@ dirStartPositionsHi :: [Int]
 (dirStartPositionsLo, dirStartPositionsHi) =
   unzip (map ((.&. 0xff) &&& (`shiftR` 8)) pos)
   where
-    pos = map (\x -> x * 40 + 0x4800) [0..253]
+    pos = map (\x -> x * 40 + 0x4800) [0..254]
