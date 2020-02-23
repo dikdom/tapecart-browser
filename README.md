@@ -1,10 +1,7 @@
 tapecart-browser large directory mod
 =========================
 
-This is a spinoff,  modified tapecart-browser that will be capable of
-handling more than 126 entries in the menu (coming from one single
-TCRT file). Currently investigation is ongoing for feasibility check
-if it is reasonably possible...
+This is a modified tapecart-browser that is capable of handling 8MB and 255 entries in the menu (coming from one single TCRT file). 
 This haskell environment is insane (almost 1GB needs to be downloaded to install), but I don't have time to refactor..
 
 
